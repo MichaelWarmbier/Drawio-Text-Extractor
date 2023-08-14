@@ -1,4 +1,4 @@
-# Drawio-Text-Extractor
+# Drawio-Text-Extractor V1.0
 
 A simple JavaScript package to extract text elements from a .drawio file.
 
