@@ -1,1 +1,6 @@
 *.drawio
+*.txt
+*.csv
+*.tsv
+*.xlsx
+*.drawio.bkp

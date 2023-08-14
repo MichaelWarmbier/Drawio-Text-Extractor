@@ -1,6 +1,6 @@
 # Drawio-Text-Extractor
 
-A simple Java package to extract text elements from a .drawio file.
+A simple JavaScript package to extract text elements from a .drawio file.
 
 
 ## About
@@ -8,6 +8,59 @@ A simple Java package to extract text elements from a .drawio file.
 [Drawio](https://github.com/jgraph/drawio) is a web application and desktop [Electron](https://www.electronjs.org/) based application that allows users to create diagrams and similar visual items.
 
 This application is a small utility tool that allows users to easily extract text from their project files in various formats for efficient data management.
+
+
+## Installation
+
+You can install this utility directly using one of the releases. It is not meant as a package, and is meant to be used directly.
+
+In order for everything to run, you need to have [node.js](https://nodejs.org/en) installed.
+
+**Note**: this application has _yet_ to be tested on Linux. Right now it is only intended to work on Windows.
+
+## How To Use
+
+Open a **command line** or **terminal** to the directory that you've installed the app. You can run the app using the following commands:
+
+### Extract From a Specific File
+
+```
+node app.js <path_to_file>
+```
+##### **Note**: You do not have to include .drawio in the argument.
+
+### Extract From an Entire Folder
+
+To extract from a specific folder:
+```
+node app.js <folder> -scan
+```
+
+To extract from the current folder:
+```
+node app.js . -scan
+```
+
+### Extract From an Filesystem
+```
+node app.js <folder> -deepscan
+```
+##### **Note**: Depending on the size of your system this may take some time.
+
+### Determining the Output
+
+Currently, this project supports the following forms of output:
+
+- Text (default). Use the argument `-txt`
+- Comma Separated Values. Use the argument `-csv`
+- Tab Separated Values. Use the argument `-tsv`
+- Excel Spreadsheets. Use either the argument `-excel` or `xlsx`
+
+### Example Usage:
+
+```
+node app.js "./MyProject/Diagram" -deepscan -excel
+```
 
 ## Credit
 
