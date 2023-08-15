@@ -1,6 +1,6 @@
 # Drawio-Text-Extractor V1.0
 
-A simple JavaScript package to extract text elements from a .drawio file.
+A simple JavaScript package to extract text elements from a .drawio file. Support for both **Windows** and **Linux**.
 
 
 ## About
@@ -16,7 +16,15 @@ You can install this utility directly using one of the releases. It is not meant
 
 In order for everything to run, you need to have [node.js](https://nodejs.org/en) installed.
 
-**Note**: this application has _yet_ to be tested on Linux. Right now it is only intended to work on Windows.
+### Linux
+
+This application has been tested and verified to work on **Ubuntu 22.04.2 LTS**. It is expected to function on all flavors of Linux that support `nodejs`.
+
+You can either _download_ the repository directly from the global release, or clone the repository:
+
+```sh
+git clone https://github.com/MichaelWarmbier/Drawio-Text-Extractor
+```
 
 ## How To Use
 

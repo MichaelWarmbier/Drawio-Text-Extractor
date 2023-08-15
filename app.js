@@ -1,4 +1,3 @@
-#!/usr/bin/node
 /*//// External ////*/
 
 const fs = require('fs');
