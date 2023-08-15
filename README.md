@@ -1,4 +1,4 @@
-# Drawio-Text-Extractor V1.0
+# Drawio-Text-Extractor V1.1
 
 A simple JavaScript package to extract text elements from a .drawio file. Support for both **Windows** and **Linux**.
 
@@ -26,25 +26,40 @@ Open a **command line** or **terminal** to the directory that you've installed t
 
 ### Extract From a Specific File
 
-```
-node app.js <path_to_file>
+```sh
+node app.js "path/to/project" 
 ```
 ##### **Note**: You do not have to include .drawio in the argument.
 
-### Extract From an Entire Folder
+### Labeling Results By File
+
+Doing this will organize all the results by file that they belong to. 
+
+```sh
+node app.js "path/to/project" -l
+```
+
+### Filtering Results With RegEx
+
+```sh
+node app.js "path/to/project" -f "regexString" 
+```
+##### **Note**: You do not have to include the `/` characters in the RegEx string.
+
+### Extract From a Folder
 
 To extract from a specific folder:
-```
+```sh
 node app.js <folder> -scan
 ```
 
 To extract from the current folder:
-```
+```sh
 node app.js . -scan
 ```
 
 ### Extract From an Filesystem
-```
+```sh
 node app.js <folder> -deepscan
 ```
 ##### **Note**: Depending on the size of your system this may take some time.
@@ -54,13 +69,14 @@ node app.js <folder> -deepscan
 Currently, this project supports the following forms of output:
 
 - Text (default). Use the argument `-txt`
+- Command-Line Interface Output. Use the argument `-cli`
 - Comma Separated Values. Use the argument `-csv`
 - Tab Separated Values. Use the argument `-tsv`
 - Excel Spreadsheets. Use either the argument `-excel` or `xlsx`
 
 ### Example Usage:
 
-```
+```sh
 node app.js "./MyProject/Diagram" -deepscan -excel
 ```
 
