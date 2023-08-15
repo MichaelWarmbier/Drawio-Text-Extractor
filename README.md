@@ -72,4 +72,4 @@ node app.js "./MyProject/Diagram" -deepscan -excel
 
 ## Credit
 
-Thank you to the entire `drawio` and `drawio-desktop` team for your amazing utility! Thank you also to [MendelPro] for assisting in the reverse engineering of the `.drawio` file.
+Thank you to the entire `drawio` and `drawio-desktop` team for your amazing utility! Thank you also to [MendelPro](https://github.com/MendelPro/) for assisting in the reverse engineering of the `.drawio` file.
