@@ -1,4 +1,4 @@
-#!"C:\Program Files\nodejs\node.exe"
+#!/usr/bin/node
 /*//// External ////*/
 
 const fs = require('fs');
@@ -30,11 +30,11 @@ async function openFile(dir) {
         let data = await readFileAsync(dir);
         return data.toString();
     }
-    catch (e) { printErr("Unable to open file."); }
+    catch (e) { printErr("Unable to open file (01)."); }
 }
 
 function loadArguments() {
-    if (args[2] == null) printErr("Please enter a file.");
+    if (args[2] == null) printErr("Please enter a file (02).");
     if (args.includes('-txt')) returnType = type.TXT;
     else if (args.includes('-csv')) returnType = type.CSV;
     else if (args.includes('-tsv')) returnType = type.TSV;
@@ -51,7 +51,7 @@ function scanDir(folder, deep=false, first=true) {
     let resultList = [];
     let localFiles;
     try { localFiles = fs.readdirSync(folder) } catch (e) { 
-        if (first) printErr("Folder does not exist.");
+        if (first) printErr("Folder does not exist (03).");
     }
     try {
         if (deep) for (let file of localFiles) if (!file.includes('.'))
@@ -96,7 +96,7 @@ function rotateArray(arr) {
     return returnArr;
 }
 
-async function convertToReturnType(allText, i) {
+async function convertToReturnType(allText) {
     let output= '';
 
     switch (returnType) {
@@ -107,7 +107,7 @@ async function convertToReturnType(allText, i) {
             try {
                 output = xlsx.build([{name: 'Result', data: rotateArray(allText) }]); 
                 await writeFileAsync('Result.xlsx', output, err => { });
-            } catch (e) { printErr('Unable to save Result.xlsx.'); }
+            } catch (e) { printErr('Unable to save Result.xlsx (04).'); }
         break;
     }
     if (returnType != type.XLSX) 
