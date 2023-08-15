@@ -12,19 +12,13 @@ This application is a small utility tool that allows users to easily extract tex
 
 ## Installation
 
-You can install this utility directly using one of the releases. It is not meant as a package, and is meant to be used directly.
+You can install this utility directly by download the [latest release](https://github.com/MichaelWarmbier/Drawio-Text-Extractor/releases/tag/Release). It is not meant to be installed as a package, and is meant to be used directly.
 
 In order for everything to run, you need to have [node.js](https://nodejs.org/en) installed.
 
 ### Linux
 
 This application has been tested and verified to work on **Ubuntu 22.04.2 LTS**. It is expected to function on all flavors of Linux that support `nodejs`.
-
-You can either _download_ the repository directly from the global release, or clone the repository:
-
-```sh
-git clone https://github.com/MichaelWarmbier/Drawio-Text-Extractor
-```
 
 ## How To Use
 
