@@ -28,6 +28,7 @@ const tempLabel = '[FILE LABEL]: ';
 let totalFiltered = 0;
 let filterArgument = new RegExp(/(?:)/);
 let returnType = type.TXT;
+let exFolders = [];
 let fileName = [];
 
 /*//// Functions ////*/
@@ -52,6 +53,12 @@ function loadArguments() {
     else if (args.includes('-cli')) returnType = type.CLI;
     else if (args.includes('-xlsx') || args.includes('-excel')) returnType = type.XLSX;
 
+    if (args.includes('-ex')) {
+        if (!args.includes('-deepscan'))
+            console.log(`${clr.WARNING}WARNING:${clr.END} Not using deepscan. Folder exclusion ignored.`)
+        exFolders = args.slice(args.indexOf('-ex') + 1);
+    }
+
     if (args.includes('-scan')) fileName = scanDir(args[2]);
     else if (args.includes('-deepscan')) fileName = scanDir(args[2], 1);
     else { fileName.push(`${args[2].replace('.drawio', '')}.drawio`); }
@@ -72,7 +79,7 @@ function scanDir(folder, deep=false, first=true) {
         if (first) printErr("Folder does not exist (03).");
     }
     try {
-        if (deep) for (let file of localFiles) if (!file.includes('.'))
+        if (deep) for (let file of localFiles) if (!file.includes('.') && exFolders.indexOf(file) == -1)
             resultList = resultList.concat(scanDir(`${folder}/${file}`, 1, 0));
 
         for (let file of localFiles)
@@ -110,7 +117,12 @@ function cleanText(textList, i) {
         if (tempCompare != newElem) totalFiltered++;
         if (newElem) cleanedList.push(newElem);
     }
-    
+    if (args.includes('-rd'))
+        cleanedList = cleanedList.filter((item, index) => cleanedList.indexOf(item) === index);
+    if (args.includes('-fd')) {
+        cleanedList = cleanedList.filter((item, index) => cleanedList.indexOf(item) !== index);
+        cleanedList = cleanedList.filter((item, index) => cleanedList.indexOf(item) === index);
+    }
     return cleanedList;
 }
 
@@ -157,7 +169,7 @@ async function convertToReturnType(allText) {
         await writeFileAsync(`Result.${returnType}`, output, function (err) {
             if (err) { printErr(`Unable to save Result.${returnType} file.`); }
         });
-    console.log(`${clr.GOOD}File saved to directory as ${clr.WARNING}Result.${returnType}${clr.END}`)
+    console.log(`${clr.SUCCESS}File saved to directory as ${clr.WARNING}Result.${returnType}${clr.END}`)
 }
 
 /*//// Code ////*/
