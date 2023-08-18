@@ -1,4 +1,4 @@
-# Drawio-Text-Extractor V1.1
+# Drawio-Text-Extractor V1.2
 
 A simple JavaScript package to extract text elements from a .drawio file. Support for both **Windows** and **Linux**.
 
@@ -63,6 +63,18 @@ node app.js . -scan
 node app.js <folder> -deepscan
 ```
 ##### **Note**: Depending on the size of your system this may take some time.
+
+You can also exclude specific folders by using the following option at the end:
+
+```sh
+node app.js <folder> -deepscan -ex <folder1> <folder2> ..
+```
+
+### Handling Duplicates
+
+You can remove all duplicates by using the `-rd` option. This will only retrieve one copy of each.
+
+You can retrieve _only_ the duplicates by using the `-fd` option.
 
 ### Determining the Output
 
